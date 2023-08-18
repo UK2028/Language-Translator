@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Language Translator</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <div
+      class="border border-dark"
+      style="
+        background: linear-gradient(
+          90deg,
+          rgb(146, 144, 192) 0%,
+          rgb(218, 209, 219) 35%,
+          rgb(146, 196, 161) 100%
+        );
+        height: 100vh;
+      "
+    >
+      <div class="d-flex flex-row justify-content-around mt-5 p-5">
+        <div class="p-3" style="width: 45%">
+          <textarea
+            name="inputText"
+            class="form-control border border-dark border-opacity-25 my-2"
+            id="inputText"
+            placeholder="Enter text"
+            cols="30"
+            rows="10"
+          ></textarea>
+          <div class="d-flex justify-content-evenly">
+            <button class="btn btn-outline-primary speak">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                fill="currentColor"
+                class="bi bi-volume-up-fill"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  d="M11.536 14.01A8.473 8.473 0 0 0 14.026 8a8.473 8.473 0 0 0-2.49-6.01l-.708.707A7.476 7.476 0 0 1 13.025 8c0 2.071-.84 3.946-2.197 5.303l.708.707z"
+                />
+                <path
+                  d="M10.121 12.596A6.48 6.48 0 0 0 12.025 8a6.48 6.48 0 0 0-1.904-4.596l-.707.707A5.483 5.483 0 0 1 11.025 8a5.483 5.483 0 0 1-1.61 3.89l.706.706z"
+                />
+                <path
+                  d="M8.707 11.182A4.486 4.486 0 0 0 10.025 8a4.486 4.486 0 0 0-1.318-3.182L8 5.525A3.489 3.489 0 0 1 9.025 8 3.49 3.49 0 0 1 8 10.475l.707.707zM6.717 3.55A.5.5 0 0 1 7 4v8a.5.5 0 0 1-.812.39L3.825 10.5H1.5A.5.5 0 0 1 1 10V6a.5.5 0 0 1 .5-.5h2.325l2.363-1.89a.5.5 0 0 1 .529-.06z"
+                /></svg>&nbsp;Speak
+            </button>
+            <button class="btn btn-outline-danger copyText">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                fill="currentColor"
+                class="bi bi-clipboard2-fill"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  d="M9.5 0a.5.5 0 0 1 .5.5.5.5 0 0 0 .5.5.5.5 0 0 1 .5.5V2a.5.5 0 0 1-.5.5h-5A.5.5 0 0 1 5 2v-.5a.5.5 0 0 1 .5-.5.5.5 0 0 0 .5-.5.5.5 0 0 1 .5-.5h3Z"
+                />
+                <path
+                  d="M3.5 1h.585A1.498 1.498 0 0 0 4 1.5V2a1.5 1.5 0 0 0 1.5 1.5h5A1.5 1.5 0 0 0 12 2v-.5c0-.175-.03-.344-.085-.5h.585A1.5 1.5 0 0 1 14 2.5v12a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 14.5v-12A1.5 1.5 0 0 1 3.5 1Z"/></svg>&nbsp;Copy Text
+            </button>
+            <select
+              class="form-select btn btn-primary selectLanguage"
+              style="display: inline; width: 50%"></select>
+          </div>
+        </div>
+        <div class="p-3" style="width: 45%">
+          <textarea
+            name="outputText"
+            placeholder="Translate"
+            class="form-control border border-dark border-opacity-25 my-2"
+            id="outputText"
+            readonly
+            disabled
+            cols="30"
+            rows="10"
+          ></textarea>
+          <div class="d-flex justify-content-evenly">
+            <button class="btn btn-outline-primary speak">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                fill="currentColor"
+                class="bi bi-volume-up-fill"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  d="M11.536 14.01A8.473 8.473 0 0 0 14.026 8a8.473 8.473 0 0 0-2.49-6.01l-.708.707A7.476 7.476 0 0 1 13.025 8c0 2.071-.84 3.946-2.197 5.303l.708.707z"
+                />
+                <path
+                  d="M10.121 12.596A6.48 6.48 0 0 0 12.025 8a6.48 6.48 0 0 0-1.904-4.596l-.707.707A5.483 5.483 0 0 1 11.025 8a5.483 5.483 0 0 1-1.61 3.89l.706.706z"
+                />
+                <path
+                  d="M8.707 11.182A4.486 4.486 0 0 0 10.025 8a4.486 4.486 0 0 0-1.318-3.182L8 5.525A3.489 3.489 0 0 1 9.025 8 3.49 3.49 0 0 1 8 10.475l.707.707zM6.717 3.55A.5.5 0 0 1 7 4v8a.5.5 0 0 1-.812.39L3.825 10.5H1.5A.5.5 0 0 1 1 10V6a.5.5 0 0 1 .5-.5h2.325l2.363-1.89a.5.5 0 0 1 .529-.06z"
+                /></svg>&nbsp;Speak
+            </button>
+            <button class="btn btn-outline-danger copyText">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                fill="currentColor"
+                class="bi bi-clipboard2-fill"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  d="M9.5 0a.5.5 0 0 1 .5.5.5.5 0 0 0 .5.5.5.5 0 0 1 .5.5V2a.5.5 0 0 1-.5.5h-5A.5.5 0 0 1 5 2v-.5a.5.5 0 0 1 .5-.5.5.5 0 0 0 .5-.5.5.5 0 0 1 .5-.5h3Z"
+                />
+                <path
+                  d="M3.5 1h.585A1.498 1.498 0 0 0 4 1.5V2a1.5 1.5 0 0 0 1.5 1.5h5A1.5 1.5 0 0 0 12 2v-.5c0-.175-.03-.344-.085-.5h.585A1.5 1.5 0 0 1 14 2.5v12a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 14.5v-12A1.5 1.5 0 0 1 3.5 1Z"
+                /></svg>&nbsp;Copy Text
+            </button>
+            <select
+              class="form-select btn btn-primary selectLanguage"
+              style="display: inline; width: 50%"
+            ></select>
+          </div>
+        </div>
+      </div>
+      <div class="d-flex justify-content-evenly">
+        <button
+          class="btn btn-primary p-3"
+          id="translateText"
+          style="width: 40%; font-size: x-large"
+        >
+          Translate Text
+        </button>
+        <button
+          style="color: white; width: 40%; font-size: x-large"
+          class="bi bi-arrow-left-right btn btn-success p-3 exchange"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="30"
+            height="30"
+            fill="currentColor"
+            class="bi bi-arrow-left-right"
+            viewBox="0 0 16 16"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M1 11.5a.5.5 0 0 0 .5.5h11.793l-3.147 3.146a.5.5 0 0 0 .708.708l4-4a.5.5 0 0 0 0-.708l-4-4a.5.5 0 0 0-.708.708L13.293 11H1.5a.5.5 0 0 0-.5.5zm14-7a.5.5 0 0 1-.5.5H2.707l3.147 3.146a.5.5 0 1 1-.708.708l-4-4a.5.5 0 0 1 0-.708l4-4a.5.5 0 1 1 .708.708L2.707 4H14.5a.5.5 0 0 1 .5.5z"
+            />
+          </svg>
+          &nbsp;&nbsp;&nbsp;&nbsp;Exchange Content
+        </button>
+      </div>
+    </div>
+    <script src="./countryCode.js "></script>
+    <script src="./script.js"></script>
+  </body>
+</html>
